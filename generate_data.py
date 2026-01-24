@@ -48,7 +48,9 @@ def generate_customer_data(n_samples=10000):
     balance[zero_balance_mask] = 0
     
     # Number of Products (1-4)
-    num_products = np.random.choice([1, 2, 3, 4], n_samples, p=[0.5, 0.46, 0.03, 0.01])
+    # Distribution probabilities for different product counts
+    PRODUCT_PROBABILITIES = [0.5, 0.46, 0.03, 0.01]
+    num_products = np.random.choice([1, 2, 3, 4], n_samples, p=PRODUCT_PROBABILITIES)
     
     # Has Credit Card (0 or 1)
     has_cr_card = np.random.choice([0, 1], n_samples, p=[0.3, 0.7])

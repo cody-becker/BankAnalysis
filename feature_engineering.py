@@ -6,6 +6,9 @@ Creates derived features to improve model performance.
 import pandas as pd
 import numpy as np
 
+# Constants
+DIVISION_EPSILON = 1  # Small value to avoid division by zero
+
 
 def create_derived_features(df):
     """
@@ -21,7 +24,7 @@ def create_derived_features(df):
     
     # Balance per product ratio
     if 'Balance' in df_features.columns and 'NumOfProducts' in df_features.columns:
-        df_features['BalancePerProduct'] = df_features['Balance'] / (df_features['NumOfProducts'] + 1)
+        df_features['BalancePerProduct'] = df_features['Balance'] / (df_features['NumOfProducts'] + DIVISION_EPSILON)
     
     # Credit score category
     if 'CreditScore' in df_features.columns:
@@ -58,7 +61,7 @@ def create_derived_features(df):
     
     # Salary to balance ratio
     if 'EstimatedSalary' in df_features.columns and 'Balance' in df_features.columns:
-        df_features['SalaryToBalanceRatio'] = df_features['EstimatedSalary'] / (df_features['Balance'] + 1)
+        df_features['SalaryToBalanceRatio'] = df_features['EstimatedSalary'] / (df_features['Balance'] + DIVISION_EPSILON)
     
     # Product engagement score
     if 'NumOfProducts' in df_features.columns and 'IsActiveMember' in df_features.columns:

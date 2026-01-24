@@ -4,6 +4,7 @@ Implements classification models and evaluation metrics.
 """
 
 import numpy as np
+import pandas as pd
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
@@ -221,7 +222,3 @@ def plot_roc_curve(y_test, y_pred_proba, model_name="Model"):
     plt.savefig(f'roc_curve_{model_name.lower().replace(" ", "_")}.png', dpi=150)
     print(f"ROC curve saved as roc_curve_{model_name.lower().replace(' ', '_')}.png")
     plt.close()
-
-
-# Import pandas for feature importance display
-import pandas as pd
